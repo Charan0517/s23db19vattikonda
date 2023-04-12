@@ -1,8 +1,16 @@
 var Teacher = require('../models/teacher');
 // List of all teachers
-exports.teacher_list = function(req, res) {
-res.send('NOT IMPLEMENTED: Teacher list');
-};
+exports.teacher_list = async function(req, res) {
+    try{
+    theTeachers = await Teacher.find();
+    res.send(theTeachers);
+    }
+    catch(err){
+    res.status(500);
+    res.send(`{"error": ${err}}`);
+    }
+    };
+    
 // for a specific teacher.
 exports.teacher_detail = function(req, res) {
 res.send('NOT IMPLEMENTED: Teacher detail: ' + req.params.id);
