@@ -2,14 +2,13 @@ extends layout
 
 block content
     h1= title
-    -
-     let results  = [{"Teacher_Name": "Jhon", "Teacher_Salary": "20,000", "Subject": "Java",}, { "Teacher_Name": "Wick", "Teacher_Salary": "26,000", "Subject": "Python",}, {"Teacher_Name": "Smith", "Teacher_Salary": "15,000", "Subject": "Compile",},]
+    -let items  = results
     div(class= "container-fluid")
         div(class = "row")  
-            each item, index in results 
-                div(class= "col-sm-2", onclick=`teaches(${index})`) Name:  #{item.Teacher_Name}
-                div(class= "col-sm-2", onclick=`teaches(${index})`) Salary:  #{item.Teacher_Salary}
-                div(class= "col-sm-2", onclick=`teaches(${index})`) Subject:   #{item.Subject}
+            each item, index in items 
+                div(class= "col-sm-2", onclick=`teaches(${index})`) Name:  #{item.teacher_name}
+                div(class= "col-sm-2", onclick=`teaches(${index})`) Salary:  #{item.salary}
+                div(class= "col-sm-2", onclick=`teaches(${index})`) Subject:   #{item.subject}
     
     script.
         function teaches(Index){

@@ -1,9 +1,6 @@
 var express = require('express');
+const teacher_controlers= require('../controllers/teacher');
 var router = express.Router();
-
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('teacher', { title: 'Search Results teacher' });
-});
-
+/* GET teachers */
+router.get('/', teacher_controlers.teacher_view_all_Page );
 module.exports = router;
