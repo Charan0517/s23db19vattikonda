@@ -38,21 +38,21 @@ async function recreateDB(){
     console.error(err)});
   instance2.save().then(doc=>{
 
-    console.log("First object saved")}
+    console.log("Second object saved")}
 
     ).catch(err=>{
 
     console.error(err)});
   instance3.save().then(doc=>{
 
-    console.log("First object saved")}
+    console.log("Third object saved")}
 
     ).catch(err=>{
 
     console.error(err)});
   instance4.save().then(doc=>{
 
-    console.log("First object saved")}
+    console.log("Fourth object saved")}
 
     ).catch(err=>{
 
