@@ -29,10 +29,34 @@ async function recreateDB(){
   let instance2 = new Teacher({teacher_name:"Hari", salary:'20,500', subject:"Applications"});
   let instance3 = new Teacher({teacher_name:"Jhon", salary:'16,000', subject:"DBMS"});
   let instance4 = new Teacher({teacher_name:"Smith", salary:'15,000', subject:"SQL"});
-  instance1.save();
-  instance2.save();
-  instance3.save();
-  instance4.save();
+  instance1.save().then(doc=>{
+
+    console.log("First object saved")}
+
+    ).catch(err=>{
+
+    console.error(err)});
+  instance2.save().then(doc=>{
+
+    console.log("First object saved")}
+
+    ).catch(err=>{
+
+    console.error(err)});
+  instance3.save().then(doc=>{
+
+    console.log("First object saved")}
+
+    ).catch(err=>{
+
+    console.error(err)});
+  instance4.save().then(doc=>{
+
+    console.log("First object saved")}
+
+    ).catch(err=>{
+
+    console.error(err)});
   // function(err,doc) {
   //   if(err) return console.error(err);
   //   console.log("First object saved")
