@@ -47,9 +47,24 @@ exports.teacher_delete = function(req, res) {
 res.send('NOT IMPLEMENTED: Teacher delete DELETE ' + req.params.id);
 };
 // Handle Teacher update form on PUT.
-exports.teacher_update_put = function(req, res) {
-res.send('NOT IMPLEMENTED: Teacher update PUT' + req.params.id);
-};
+exports.teacher_update_put = async function(req, res) {
+    console.log(`update on id ${req.params.id} with body ${JSON.stringify(req.body)}`)
+    try {
+    let toUpdate = await Teacher.findById( req.params.id)
+    // Do updates of properties
+    if(req.body.teacher_name)
+    toUpdate.teacher_name = req.body.teacher_name;
+    if(req.body.salary) toUpdate.salary = req.body.salary;
+    if(req.body.subject) toUpdate.subject = req.body.subject;
+    let result = await toUpdate.save();
+    console.log("Sucess " + result)
+    res.send(result)
+    } catch (err) {
+    res.status(500)
+    res.send(`{"error": ${err}: Update for id ${req.params.id}
+    failed`);
+    }
+    }
 
 // VIEWS
 // Handle a show all view
