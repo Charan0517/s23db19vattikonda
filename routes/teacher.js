@@ -4,3 +4,6 @@ var router = express.Router();
 /* GET teachers */
 router.get('/', teacher_controlers.teacher_view_all_Page );
 module.exports = router;
+
+/* GET detail teacher page */
+router.get('/detail', teacher_controlers.teacher_view_one_Page);
