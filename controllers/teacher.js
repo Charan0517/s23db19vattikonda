@@ -115,3 +115,33 @@ res.status(500)
 res.send(`{'error': '${err}'}`);
 }
 };
+
+
+// Handle building the view for updating a teacher.
+// query provides the id
+exports.teacher_update_Page = async function(req, res) {
+    console.log("update view for item "+req.query.id)
+    try{
+    let result = await Teacher.findById(req.query.id)
+    res.render('teacherupdate', { title: 'Teacher Update', toShow: result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+    }
+
+
+// Handle a delete one view with id from query
+exports.teacher_delete_Page = async function(req, res) {
+    console.log("Delete view for id " + req.query.id)
+    try{
+    result = await Teacher.findById(req.query.id)
+    res.render('teacherdelete', { title: 'Teacher Delete', toShow:
+    result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+    }
