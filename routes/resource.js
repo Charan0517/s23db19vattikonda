@@ -17,5 +17,7 @@ router.put('/teacher/:id', teacher_controller.teacher_update_put);
 router.get('/teacher/:id', teacher_controller.teacher_detail);
 // GET request for list of all Teacher items.
 router.get('/teacher', teacher_controller.teacher_list);
+/* GET detail costume page */
+router.get('/detail', teacher_controlers.teacher_view_one_Page);
 module.exports = router;
 

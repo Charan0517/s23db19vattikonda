@@ -43,9 +43,17 @@ exports.teacher_create_post = async function(req, res) {
     }
     };
 // Handle Teacher delete form on DELETE.
-exports.teacher_delete = function(req, res) {
-res.send('NOT IMPLEMENTED: Teacher delete DELETE ' + req.params.id);
-};
+exports.teacher_delete = async function(req, res) {
+    console.log("delete " + req.params.id)
+    try {
+    result = await Teacher.findByIdAndDelete( req.params.id)
+    console.log("Removed " + result)
+    res.send(result)
+    } catch (err) {
+    res.status(500)
+    res.send(`{"error": Error deleting ${err}}`);
+    }
+    };
 // Handle Teacher update form on PUT.
 exports.teacher_update_put = async function(req, res) {
     console.log(`update on id ${req.params.id} with body ${JSON.stringify(req.body)}`)
@@ -79,4 +87,16 @@ exports.teacher_view_all_Page = async function(req, res) {
     }
     };
     
-    
+// Handle a show one view with id specified by query
+exports.teacher_view_one_Page = async function(req, res) {
+    console.log("single view for id " + req.query.id)
+    try{
+    result = await Teacher.findById( req.query.id)
+    res.render('teacherdetail',
+    { title: 'Teacher Detail', toShow: result });
+    }
+    catch(err){
+    res.status(500)
+    res.send(`{'error': '${err}'}`);
+    }
+    };
