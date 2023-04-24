@@ -1,6 +1,7 @@
 extends layout
 
 block content
+  button.btn( class="btn-primary ml-1", onclick= `dispatch(\"/teacher/create\")`) Create
   h1= title
  
   - let result = results
@@ -8,9 +9,15 @@ block content
     div(class="row")
       each item,index in result
        - let destination = `dispatch(\"/teacher/update?id=${item._id}\")`
-       div(class="col-sm-2",onClick=`buy(${index})`) Item#{item.teacher_name}(#{item.salary}) is #{item.subject}
-      
-        button.btn( class="btn-primary ml-1", onclick= destination) Update
+       - let detailDes = `dispatch(\"/teacher/detail?id=${item._id}\")`
+       - let deleteDes = `dispatch(\"/teacher/delete?id=${item._id}\")`
+       div(class="col-sm-3",onClick=`buy(${index})`) Item#{item.teacher_name}(#{item.salary}) is #{item.subject}
+        div(class="col-sm-2")
+          button.btn( class="btn-primary ml-1", onclick= destination) Update 
+        div(class="col-sm-2")
+          button.btn( class="btn-success ml-1", onclick= detailDes) Details
+        div(class="col-sm-2")
+          button.btn( class="btn-warning ml-1", onclick= deleteDes) Delete 
   script.
    function dispatch(path){
     window.location.href=path

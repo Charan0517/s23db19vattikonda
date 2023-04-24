@@ -1,6 +1,16 @@
 const mongoose = require("mongoose")
+
+// function validator (v) {
+//     return v.length > 5;
+//   };
+
+
 const teacherSchema = mongoose.Schema({
-teacher_name: String,
+teacher_name: {
+    type: String,
+    minlength: 4,
+    maxlength: 20
+},
 salary: String,
 subject: String
 })
